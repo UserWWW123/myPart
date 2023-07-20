@@ -254,16 +254,33 @@ struct DesignerView: View {
                         }
                     )
                 VStack{
-                    Image("dior")
+                    Image("christian")
                         .resizable()
                         .scaledToFit()
-                        .frame(width:100, height:200)
+                        .frame(width:320)
                         .alignmentGuide(.trailing){ _ in 0}
-                    
-                    Text("Christian Dior was a famous and influential French fashion designer, and created the brand Christian Dior.He was born in 1905 in Granville. When he was a boy, he was passionate in art and found interest in architecture. Dior’s family had hopes he would become a diplomat. Although he expressed an interest in becoming an architect, he was submitted to pressure from his father, and enrolled at the École des Sciences Politiques to study political science. However, with the desire to be involved in artistic activities and his talent, he traded his sketches to people for ten cents each. Seeing the talent his son had, his father gave financial support to Dior to open a small gallery with his friends. Unfortunately, in 1931, the gallery was forced to closed, after his mother and brother die and the family business suffered great loss due to the Great Depression. After the closing of his gallery, he continue selling his sketches until he found a job  illustrating the magazine Figaro Illustré. Several years later, he was hired as a design assistant by Paris couturier Robert Piguet. However, due to the begin of World War II, he went to serve the military and continue his career after the war. On December 16, 1946, he founded his label under his name with the support by Marcel Boussac. He introduced voluptuous designs. His dress designs broke the barrier of rigidness and flare, give women the perfect feminine and curvaceous look. He gave back glamour and beauty to women starved of both during the war.")
+
+                    Text("Christian Dior was a famous and influential French fashion designer, and created the brand Christian Dior. He was")
                         .font(.body)
                         .multilineTextAlignment(.leading)
-                        .lineLimit(expand ?  nil: 3 )
+
+                    if expand {
+                                            Text("born in 1905 in Granville. When he was a boy, he was passionate in art and found interest in architecture. Dior’s family had hopes he would become a diplomat. Although he expressed an interest in becoming an architect, he was submitted to pressure from his father, and enrolled at the École des Sciences Politiques to study political science. However, with the desire to be involved in artistic activities and his talent, he traded his sketches to people for ten cents each. Seeing the talent his son had, his father gave financial support to Dior to open a small gallery with his friends. Unfortunately, in 1931, the gallery was forced to closed, after his mother and brother die and the family business suffered great loss due to the Great Depression. After the closing of his gallery, he continue selling his sketches until he found a job  illustrating the magazine Figaro Illustré. Several years later, he was hired as a design assistant by Paris couturier Robert Piguet. However, due to the begin of World War II, he went to serve the military and continue his career after the war. On December 16, 1946, he founded his label under his name with the support by Marcel Boussac. He introduced voluptuous designs. His dress designs broke the barrier of rigidness and flare, give women the perfect feminine and curvaceous look. He gave back glamour and beauty to women starved of both during the war.")
+                                                .font(.body)
+
+                                            Button("Read Less") {
+                                                expand = false
+                                            }
+                                            .padding(.top, 4)
+                                        } else {
+                                            Button("Read More") {
+                                                expand = true
+                                            }
+                                            .padding(.top, 4)
+                                        }
+                        Spacer()
+                    
+                    
                 }
                 Spacer()
                     .frame(height: 50.0)
@@ -276,7 +293,22 @@ struct DesignerView: View {
 
 struct NewsView: View {
     var body: some View {
-        Text("News Content")
+        ScrollView{
+            VStack{
+                Text("Christian Dior")
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth:.infinity)
+                    .background(
+                        GeometryReader { geo in
+                            Color.yellow
+                                .scaleEffect(x: 1.15, y: 1.10) // increase the scale for both x and y directions
+                                .frame(width: geo.size.width, height: geo.size.height)
+                                .position(x: geo.size.width/2, y: geo.size.height/2)
+                        }
+                    )
+            }
+        }
     }
 }
 
